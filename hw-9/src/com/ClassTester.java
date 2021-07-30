@@ -17,8 +17,8 @@ public class ClassTester {
         System.out.println();
 
         try {
-            System.out.println("Converter");
-            tester.testConverter();
+            System.out.println("JsonParser");
+            tester.testJsonParser();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -50,19 +50,21 @@ public class ClassTester {
         tmpFile.deleteOnExit();
     }
 
-    void testConverter() throws IOException {
+    void testJsonParser() throws IOException {
         File tmpFile = File.createTempFile("data", null);
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(tmpFile.getAbsolutePath(), true))) {
             writer.write("name age" + "\n");
             writer.write("alice 21" + "\n");
             writer.write("ryan 30" + "\n");
+            writer.write("john 36" + "\n");
+            writer.write("emily 19" + "\n");
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        Converter converter = new Converter();
-        converter.toJSON(tmpFile.getAbsolutePath());
+        JsonParser jsonParser = new JsonParser();
+        jsonParser.toJSON(tmpFile.getAbsolutePath());
 
         String tmpFileName = tmpFile.getAbsolutePath();
         String destinationFileName = tmpFileName.substring(0, tmpFileName.lastIndexOf("\\") + 1).concat("user.json");
@@ -86,8 +88,9 @@ public class ClassTester {
         File tmpFile = File.createTempFile("data", null);
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(tmpFile.getAbsolutePath(), true))) {
-            writer.write("the day is sunny the the\n" +
-                    "the sunny is is");
+            /*writer.write("the day is sunny the the\n" +
+                    "the sunny is is");*/
+            writer.write("А в третьем задании не правильно реализована сортировка, если у тебя будет несколько слов встречаться одинаковое количество раз, то программа будет работать не корректно.");
         } catch (IOException e) {
             e.printStackTrace();
         }

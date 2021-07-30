@@ -1,1 +1,2 @@
-    Интересные задания, спасибо, мне понравилось :)
+    * JsonParser.class заменил собой Converter.class.
+    * Логика метода toJSON(String fileName) изменена.
